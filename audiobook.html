@@ -454,6 +454,55 @@
         font-size: 0.78rem;
       }
     }
+
+    /* Love Banner */
+    .love-banner {
+      background: linear-gradient(135deg, rgba(244, 63, 94, 0.12) 0%, rgba(168, 85, 247, 0.15) 100%);
+      border: 1px solid rgba(244, 63, 94, 0.35);
+      border-radius: 14px;
+      padding: 0.75rem 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.65rem;
+      margin-bottom: 0.5rem;
+      box-shadow: 0 4px 16px rgba(244, 63, 94, 0.15);
+      animation: softGlow 3s ease-in-out infinite alternate;
+    }
+    .love-banner .banner-text {
+      font-size: 1.05rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      background: linear-gradient(135deg, #fda4af, #f472b6, #c084fc);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .love-banner .banner-heart {
+      font-size: 1.25rem;
+      animation: heartbeat 1.6s ease-in-out infinite;
+      display: inline-block;
+    }
+    @keyframes heartbeat {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+    }
+    @keyframes softGlow {
+      from { border-color: rgba(244, 63, 94, 0.3); box-shadow: 0 4px 14px rgba(244, 63, 94, 0.1); }
+      to { border-color: rgba(236, 72, 153, 0.5); box-shadow: 0 4px 20px rgba(236, 72, 153, 0.25); }
+    }
+
+    @media (max-width: 600px) {
+      .love-banner {
+        padding: 0.6rem 0.9rem;
+        border-radius: 12px;
+      }
+      .love-banner .banner-text {
+        font-size: 0.92rem;
+      }
+      .love-banner .banner-heart {
+        font-size: 1.1rem;
+      }
+    }
   </style>
 </head>
 <body>
@@ -479,6 +528,13 @@
 
     <!-- Left Column: Audio Player -->
     <section class="player-col">
+      <!-- Love Banner -->
+      <div class="love-banner">
+        <span class="banner-heart">💖</span>
+        <span class="banner-text">Chúc Vợ yêu học tốt!</span>
+        <span class="banner-heart">✨</span>
+      </div>
+
       <div class="hero-card">
         <div class="badge-pill">
           🎙️ Microsoft Neural Voice • Giọng Nam Minh
