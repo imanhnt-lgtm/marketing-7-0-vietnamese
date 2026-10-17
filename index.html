@@ -727,6 +727,25 @@
         }
 
         /* Responsive */
+        .hide-on-mobile {
+            display: inline-block;
+        }
+
+        .header-audio-btn {
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            font-weight: 600;
+            color: var(--accent);
+            background: var(--accent-light);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 6px 12px;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+        }
+
         @media (max-width: 992px) {
             .sidebar {
                 position: fixed;
@@ -742,29 +761,104 @@
             }
 
             .main-content {
-                padding: 32px 20px 80px 20px;
+                padding: 24px 16px 80px 16px;
             }
 
             .header-book-title {
-                max-width: 260px;
+                max-width: 200px;
+                font-size: 14px;
             }
         }
 
-        @media (max-width: 640px) {
-            .header-controls .hide-on-mobile {
-                display: none;
+        @media (max-width: 768px) {
+            .hide-on-mobile {
+                display: none !important;
             }
+
+            .site-header {
+                padding: 0 10px;
+                height: 54px;
+            }
+
+            .header-left {
+                gap: 8px;
+                flex: 1;
+                min-width: 0;
+            }
+
+            .sidebar-toggle-btn {
+                padding: 6px 8px;
+            }
+
+            .header-book-title {
+                max-width: 140px;
+                font-size: 13.5px;
+            }
+
+            .header-controls {
+                gap: 6px;
+                flex-shrink: 0;
+            }
+
+            .control-btn {
+                padding: 5px 8px;
+                font-size: 12px;
+            }
+
+            .header-audio-btn {
+                padding: 5px 9px;
+                font-size: 12px;
+            }
+
             .chapter-nav-cards {
                 grid-template-columns: 1fr;
             }
+
             .next-card {
                 text-align: left;
             }
+
             h1 {
-                font-size: 1.75rem;
+                font-size: 1.6rem;
+                line-height: 1.35;
             }
+
             h2 {
-                font-size: 1.35rem;
+                font-size: 1.3rem;
+            }
+        }
+
+        @media (max-width: 520px) {
+            .hide-on-mobile-sm {
+                display: none !important;
+            }
+
+            .header-book-title {
+                display: none !important;
+            }
+
+            .site-header {
+                padding: 0 8px;
+            }
+
+            .theme-btn {
+                padding: 4px 6px;
+                font-size: 11px;
+            }
+
+            .header-audio-btn {
+                padding: 4px 8px;
+                font-size: 11.5px;
+            }
+        }
+
+        @media (max-width: 380px) {
+            .hide-on-mobile-xs {
+                display: none !important;
+            }
+
+            .header-audio-btn {
+                padding: 4px 6px;
             }
         }
 
@@ -822,14 +916,15 @@
             </div>
 
             <!-- Font Size Adjuster -->
-            <div class="control-btn-group" title="Cỡ chữ">
+            <div class="control-btn-group hide-on-mobile-sm" title="Cỡ chữ">
                 <button class="control-btn size-btn" id="size-dec" title="Thu nhỏ chữ">A-</button>
                 <button class="control-btn size-btn" id="size-inc" title="Phóng to chữ">A+</button>
             </div>
 
             <!-- Audiobook Full Link -->
-            <a href="audiobook.html" class="control-btn" style="text-decoration:none; display:inline-flex; align-items:center; gap:5px; font-weight:600; color:var(--accent); background:var(--accent-light); border:1px solid var(--border-color); border-radius:8px; padding:6px 12px;" title="Nghe Trọn Bộ Sách Nói (Audiobook Toàn Tập)">
-                🎧 Sách Nói
+            <a href="audiobook.html" class="control-btn header-audio-btn" title="Nghe Trọn Bộ Sách Nói (Audiobook Toàn Tập)">
+                <span>🎧</span>
+                <span class="hide-on-mobile-xs">Sách Nói</span>
             </a>
         </div>
     </header>

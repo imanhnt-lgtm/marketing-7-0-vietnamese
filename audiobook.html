@@ -397,10 +397,61 @@
     @media (max-width: 900px) {
       .main-wrapper {
         grid-template-columns: 1fr;
+        padding: 1.25rem 1rem 5rem;
       }
       .playlist-col {
         position: static;
         max-height: none;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .top-bar {
+        padding: 0 1rem;
+        height: 56px;
+      }
+      .main-wrapper {
+        padding: 0.85rem 0.5rem 4rem;
+        gap: 1.25rem;
+      }
+      .hero-card {
+        padding: 1.25rem;
+        border-radius: 18px;
+      }
+      .track-meta {
+        gap: 0.85rem;
+        margin-bottom: 1.25rem;
+      }
+      .track-art {
+        width: 60px;
+        height: 60px;
+        font-size: 1.8rem;
+        border-radius: 12px;
+      }
+      .track-text h1 {
+        font-size: 1.1rem;
+        line-height: 1.35;
+      }
+      .track-text p {
+        font-size: 0.82rem;
+      }
+      .btn-play-hero {
+        width: 54px;
+        height: 54px;
+        font-size: 1.4rem;
+      }
+      .main-btns {
+        gap: 0.75rem;
+      }
+      .tool-btns {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        margin-top: 0.5rem;
+      }
+      .chip-btn, .btn-read-link {
+        padding: 0.4rem 0.65rem;
+        font-size: 0.78rem;
       }
     }
   </style>
