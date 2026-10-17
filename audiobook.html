@@ -22,12 +22,18 @@
       --border: #1e293b;
       --border-light: #334155;
     }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
       font-family: 'Plus Jakarta Sans', sans-serif;
       background-color: var(--bg);
       color: var(--text);
       min-height: 100vh;
+      width: 100%;
+      max-width: 100vw;
+      overflow-x: hidden;
+      position: relative;
+    }
+    body {
       display: flex;
       flex-direction: column;
     }
@@ -45,6 +51,8 @@
       position: sticky;
       top: 0;
       z-index: 100;
+      width: 100%;
+      max-width: 100vw;
     }
     .brand {
       display: flex;
@@ -52,6 +60,7 @@
       gap: 0.75rem;
       text-decoration: none;
       color: inherit;
+      min-width: 0;
     }
     .brand-logo {
       width: 36px;
@@ -63,20 +72,24 @@
       justify-content: center;
       font-size: 1.2rem;
       box-shadow: 0 0 12px var(--accent-glow);
+      flex-shrink: 0;
     }
     .brand-text h2 {
       font-size: 1.05rem;
       font-weight: 800;
       letter-spacing: -0.01em;
+      white-space: nowrap;
     }
     .brand-text p {
       font-size: 0.75rem;
       color: var(--text-muted);
+      white-space: nowrap;
     }
     .nav-actions {
       display: flex;
       gap: 0.75rem;
       align-items: center;
+      flex-shrink: 0;
     }
     .btn-secondary {
       display: inline-flex;
@@ -91,6 +104,7 @@
       font-size: 0.85rem;
       font-weight: 600;
       transition: all 0.2s;
+      white-space: nowrap;
     }
     .btn-secondary:hover {
       background: var(--card);
@@ -105,9 +119,10 @@
       margin: 0 auto;
       padding: 2rem 1.5rem 6rem;
       display: grid;
-      grid-template-columns: 1fr 380px;
+      grid-template-columns: minmax(0, 1fr) 380px;
       gap: 2rem;
       flex: 1;
+      min-width: 0;
     }
 
     /* Player Column */
@@ -115,6 +130,8 @@
       display: flex;
       flex-direction: column;
       gap: 1.5rem;
+      min-width: 0;
+      width: 100%;
     }
     .hero-card {
       background: var(--surface);
@@ -124,6 +141,8 @@
       position: relative;
       overflow: hidden;
       box-shadow: 0 20px 40px -15px rgba(0,0,0,0.6);
+      width: 100%;
+      min-width: 0;
     }
     .hero-card::before {
       content: '';
@@ -393,68 +412,6 @@
       color: var(--text-muted);
     }
 
-    /* Responsive */
-    @media (max-width: 900px) {
-      .main-wrapper {
-        grid-template-columns: 1fr;
-        padding: 1.25rem 1rem 5rem;
-      }
-      .playlist-col {
-        position: static;
-        max-height: none;
-      }
-    }
-
-    @media (max-width: 600px) {
-      .top-bar {
-        padding: 0 1rem;
-        height: 56px;
-      }
-      .main-wrapper {
-        padding: 0.85rem 0.5rem 4rem;
-        gap: 1.25rem;
-      }
-      .hero-card {
-        padding: 1.25rem;
-        border-radius: 18px;
-      }
-      .track-meta {
-        gap: 0.85rem;
-        margin-bottom: 1.25rem;
-      }
-      .track-art {
-        width: 60px;
-        height: 60px;
-        font-size: 1.8rem;
-        border-radius: 12px;
-      }
-      .track-text h1 {
-        font-size: 1.1rem;
-        line-height: 1.35;
-      }
-      .track-text p {
-        font-size: 0.82rem;
-      }
-      .btn-play-hero {
-        width: 54px;
-        height: 54px;
-        font-size: 1.4rem;
-      }
-      .main-btns {
-        gap: 0.75rem;
-      }
-      .tool-btns {
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-        margin-top: 0.5rem;
-      }
-      .chip-btn, .btn-read-link {
-        padding: 0.4rem 0.65rem;
-        font-size: 0.78rem;
-      }
-    }
-
     /* Love Banner */
     .love-banner {
       background: linear-gradient(135deg, rgba(244, 63, 94, 0.12) 0%, rgba(168, 85, 247, 0.15) 100%);
@@ -468,6 +425,8 @@
       margin-bottom: 0.5rem;
       box-shadow: 0 4px 16px rgba(244, 63, 94, 0.15);
       animation: softGlow 3s ease-in-out infinite alternate;
+      width: 100%;
+      box-sizing: border-box;
     }
     .love-banner .banner-text {
       font-size: 1.05rem;
@@ -476,11 +435,13 @@
       background: linear-gradient(135deg, #fda4af, #f472b6, #c084fc);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+      text-align: center;
     }
     .love-banner .banner-heart {
       font-size: 1.25rem;
       animation: heartbeat 1.6s ease-in-out infinite;
       display: inline-block;
+      flex-shrink: 0;
     }
     @keyframes heartbeat {
       0%, 100% { transform: scale(1); }
@@ -491,16 +452,128 @@
       to { border-color: rgba(236, 72, 153, 0.5); box-shadow: 0 4px 20px rgba(236, 72, 153, 0.25); }
     }
 
+    /* Responsive */
+    @media (max-width: 900px) {
+      .main-wrapper {
+        grid-template-columns: minmax(0, 1fr) !important;
+        padding: 1.25rem 1rem 5rem !important;
+        width: 100% !important;
+        max-width: 100vw !important;
+        box-sizing: border-box !important;
+      }
+      .player-col, .playlist-col {
+        width: 100% !important;
+        min-width: 0 !important;
+        max-width: 100% !important;
+        position: static !important;
+        max-height: none !important;
+      }
+    }
+
     @media (max-width: 600px) {
+      .top-bar {
+        padding: 0 0.75rem !important;
+        height: 54px !important;
+      }
+      .brand-text h2 {
+        font-size: 0.95rem !important;
+      }
+      .brand-text p {
+        display: none !important;
+      }
+      .btn-secondary {
+        padding: 0.35rem 0.65rem !important;
+        font-size: 0.76rem !important;
+      }
+      .main-wrapper {
+        padding: 0.75rem 0.5rem 3.5rem !important;
+        gap: 1rem !important;
+      }
+      .hero-card {
+        padding: 1.15rem 0.85rem !important;
+        border-radius: 16px !important;
+      }
       .love-banner {
-        padding: 0.6rem 0.9rem;
-        border-radius: 12px;
+        padding: 0.55rem 0.75rem !important;
+        border-radius: 12px !important;
       }
       .love-banner .banner-text {
-        font-size: 0.92rem;
+        font-size: 0.92rem !important;
       }
       .love-banner .banner-heart {
-        font-size: 1.1rem;
+        font-size: 1.1rem !important;
+      }
+      .track-meta {
+        gap: 0.75rem !important;
+        margin-bottom: 1.25rem !important;
+        align-items: center !important;
+        width: 100% !important;
+        min-width: 0 !important;
+      }
+      .track-art {
+        width: 54px !important;
+        height: 54px !important;
+        font-size: 1.6rem !important;
+        border-radius: 12px !important;
+      }
+      .track-text {
+        min-width: 0 !important;
+        flex: 1 !important;
+        overflow: hidden !important;
+      }
+      .track-text h1 {
+        font-size: 1.05rem !important;
+        line-height: 1.35 !important;
+        word-break: break-word !important;
+        overflow-wrap: break-word !important;
+      }
+      .track-text p {
+        font-size: 0.8rem !important;
+      }
+      .controls-row {
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 1rem !important;
+        width: 100% !important;
+      }
+      .main-btns {
+        width: 100% !important;
+        justify-content: center !important;
+        gap: 0.85rem !important;
+      }
+      .ctrl-icon-btn {
+        font-size: 1.1rem !important;
+      }
+      .btn-play-hero {
+        width: 52px !important;
+        height: 52px !important;
+        font-size: 1.35rem !important;
+      }
+      .tool-btns {
+        width: 100% !important;
+        display: flex !important;
+        flex-wrap: wrap !important;
+        justify-content: center !important;
+        gap: 0.4rem !important;
+      }
+      .chip-btn, .btn-read-link {
+        flex: 1 1 auto !important;
+        text-align: center !important;
+        justify-content: center !important;
+        padding: 0.45rem 0.55rem !important;
+        font-size: 0.76rem !important;
+        white-space: nowrap !important;
+      }
+      .playlist-col {
+        padding: 1rem 0.75rem !important;
+        border-radius: 16px !important;
+      }
+      .track-item {
+        padding: 0.6rem 0.5rem !important;
+        gap: 0.6rem !important;
+      }
+      .item-title {
+        font-size: 0.85rem !important;
       }
     }
   </style>
