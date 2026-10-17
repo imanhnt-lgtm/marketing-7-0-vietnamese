@@ -17,7 +17,7 @@ Bạn có thể đọc trực tiếp bản sách trực tuyến trên mọi thi�
 - **Tùy biến typography:** Lựa chọn kiểu chữ có chân (Serif cổ điển như sách in) hoặc không chân (Sans hiện đại), điều chỉnh cỡ chữ to/nhỏ linh hoạt.
 - **Mục lục tương tác:** Tự động theo dõi tiến trình đọc theo thời gian thực (Reading Progress Bar & Active Chapter Spy).
 - **Minh họa sắc nét:** Toàn bộ 39 sơ đồ, mô hình gốc từ sách đều được tích hợp hộp phóng to ảnh (Lightbox Zoom).
-- **Hỗ trợ tra cứu:** Tích hợp Từ điển đối chiếu thuật ngữ chuyên ngành Anh - Việt chuẩn mực (Glossary).
+- **🎧 Sách nói Toàn tập (Full Audiobook):** Nghe toàn bộ 10 chương và phụ lục bằng giọng đọc trí tuệ nhân tạo chất lượng cao (Microsoft Neural Voice - Giọng Nam Minh), tự động chuyển chương và tải file MP3 tại [audiobook.html](audiobook.html).
 
 ---
 

@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sách Nói Marketing 7.0 (Trọn Bộ Toàn Tập) — Philip Kotler</title>
+  <meta name="description" content="Trọn bộ Sách Nói Marketing 7.0: Cẩm nang cho Người làm Tiếp thị Tư duy trong Kỷ nguyên AI. Phiên bản tiếng Việt toàn tập.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #090d16;
+      --surface: #111827;
+      --card: #1f293d;
+      --card-hover: #283552;
+      --accent: #2563eb;
+      --accent-glow: rgba(37, 99, 235, 0.35);
+      --accent-grad: linear-gradient(135deg, #3b82f6, #6366f1);
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --border: #1e293b;
+      --border-light: #334155;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Top Nav */
+    .top-bar {
+      height: 64px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 1.5rem;
+      background: rgba(17, 24, 39, 0.85);
+      backdrop-filter: blur(12px);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+      color: inherit;
+    }
+    .brand-logo {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      background: var(--accent-grad);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      box-shadow: 0 0 12px var(--accent-glow);
+    }
+    .brand-text h2 {
+      font-size: 1.05rem;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+    }
+    .brand-text p {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+    .nav-actions {
+      display: flex;
+      gap: 0.75rem;
+      align-items: center;
+    }
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.5rem 1rem;
+      background: var(--surface);
+      border: 1px solid var(--border-light);
+      border-radius: 8px;
+      color: #cbd5e1;
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+      transition: all 0.2s;
+    }
+    .btn-secondary:hover {
+      background: var(--card);
+      color: #ffffff;
+      border-color: var(--accent);
+    }
+
+    /* Main Grid */
+    .main-wrapper {
+      max-width: 1200px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 6rem;
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      gap: 2rem;
+      flex: 1;
+    }
+
+    /* Player Column */
+    .player-col {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    .hero-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 2.25rem;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 20px 40px -15px rgba(0,0,0,0.6);
+    }
+    .hero-card::before {
+      content: '';
+      position: absolute;
+      top: -50px;
+      right: -50px;
+      width: 200px;
+      height: 200px;
+      background: radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .badge-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 0.35rem 0.85rem;
+      background: rgba(37, 99, 235, 0.18);
+      color: #93c5fd;
+      border: 1px solid rgba(59, 130, 246, 0.3);
+      border-radius: 9999px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-bottom: 1.25rem;
+    }
+    .track-meta {
+      display: flex;
+      align-items: flex-start;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .track-art {
+      width: 100px;
+      height: 100px;
+      border-radius: 18px;
+      background: var(--accent-grad);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      flex-shrink: 0;
+      box-shadow: 0 12px 24px var(--accent-glow);
+    }
+    .track-text h1 {
+      font-size: 1.4rem;
+      font-weight: 800;
+      line-height: 1.35;
+      margin-bottom: 0.5rem;
+      color: #ffffff;
+    }
+    .track-text p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
+    /* Scrubber */
+    .scrubber-wrap {
+      margin-bottom: 1.75rem;
+    }
+    .time-slider {
+      width: 100%;
+      height: 7px;
+      background: var(--card);
+      border-radius: 4px;
+      outline: none;
+      cursor: pointer;
+      accent-color: #3b82f6;
+    }
+    .time-display {
+      display: flex;
+      justify-content: space-between;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      margin-top: 0.5rem;
+      font-variant-numeric: tabular-nums;
+    }
+
+    /* Controls */
+    .controls-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .main-btns {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+    }
+    .ctrl-icon-btn {
+      background: none;
+      border: none;
+      color: var(--text);
+      cursor: pointer;
+      font-size: 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.15s;
+    }
+    .ctrl-icon-btn:hover {
+      color: #60a5fa;
+      transform: scale(1.12);
+    }
+    .btn-play-hero {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: #ffffff;
+      font-size: 1.75rem;
+      box-shadow: 0 8px 24px var(--accent-glow);
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+    }
+    .btn-play-hero:hover {
+      transform: scale(1.06);
+      background: #1d4ed8;
+    }
+    .tool-btns {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .chip-btn {
+      background: var(--card);
+      border: 1px solid var(--border-light);
+      color: var(--text);
+      padding: 0.5rem 0.9rem;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: inherit;
+      transition: background 0.15s;
+    }
+    .chip-btn:hover {
+      background: var(--card-hover);
+    }
+    .btn-read-link {
+      background: rgba(37, 99, 235, 0.15);
+      border: 1px solid rgba(59, 130, 246, 0.35);
+      color: #93c5fd;
+      text-decoration: none;
+      padding: 0.5rem 0.9rem;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      transition: all 0.15s;
+    }
+    .btn-read-link:hover {
+      background: var(--accent);
+      color: #ffffff;
+    }
+
+    /* Playlist Column */
+    .playlist-col {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      height: fit-content;
+      max-height: calc(100vh - 120px);
+      position: sticky;
+      top: 84px;
+    }
+    .playlist-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.25rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .playlist-header h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
+    .playlist-header span {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      background: var(--card);
+      padding: 0.2rem 0.6rem;
+      border-radius: 6px;
+    }
+    .playlist-scroll {
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      padding-right: 0.25rem;
+    }
+    .playlist-scroll::-webkit-scrollbar {
+      width: 5px;
+    }
+    .playlist-scroll::-webkit-scrollbar-thumb {
+      background: var(--border-light);
+      border-radius: 4px;
+    }
+    .track-item {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      padding: 0.75rem 0.85rem;
+      background: transparent;
+      border: 1px solid transparent;
+      border-radius: 10px;
+      cursor: pointer;
+      text-align: left;
+      font-family: inherit;
+      color: inherit;
+      transition: all 0.15s;
+      width: 100%;
+    }
+    .track-item:hover {
+      background: var(--card);
+    }
+    .track-item.active {
+      background: var(--card);
+      border-color: var(--accent);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+    .item-index {
+      width: 28px;
+      height: 28px;
+      border-radius: 6px;
+      background: var(--card);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      flex-shrink: 0;
+    }
+    .track-item.active .item-index {
+      background: var(--accent);
+      color: #ffffff;
+    }
+    .item-details {
+      flex: 1;
+      min-width: 0;
+    }
+    .item-title {
+      font-size: 0.9rem;
+      font-weight: 600;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      color: #e2e8f0;
+    }
+    .track-item.active .item-title {
+      color: #60a5fa;
+    }
+    .item-sub {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .main-wrapper {
+        grid-template-columns: 1fr;
+      }
+      .playlist-col {
+        position: static;
+        max-height: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Bar -->
+  <header class="top-bar">
+    <a href="index.html" class="brand">
+      <div class="brand-logo">📚</div>
+      <div class="brand-text">
+        <h2>MARKETING 7.0</h2>
+        <p>Phiên bản Sách Nói Toàn Tập</p>
+      </div>
+    </a>
+    <div class="nav-actions">
+      <a href="index.html" class="btn-secondary">
+        📖 Đọc Bản Dịch Chữ
+      </a>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="main-wrapper">
+
+    <!-- Left Column: Audio Player -->
+    <section class="player-col">
+      <div class="hero-card">
+        <div class="badge-pill">
+          🎙️ Microsoft Neural Voice • Giọng Nam Minh
+        </div>
+
+        <div class="track-meta">
+          <div class="track-art" id="trackIcon">🎧</div>
+          <div class="track-text">
+            <h1 id="currentTitle">Chương 1: Con đường tiến tới Marketing 7.0</h1>
+            <p id="currentDesc">Tác giả: Philip Kotler, Hermawan Kartajaya, Iwan Setiawan</p>
+          </div>
+        </div>
+
+        <!-- Audio element -->
+        <audio id="audioElement" preload="metadata"></audio>
+
+        <!-- Progress Bar -->
+        <div class="scrubber-wrap">
+          <input type="range" class="time-slider" id="scrubber" value="0" min="0" max="100" step="0.1">
+          <div class="time-display">
+            <span id="timeCurrent">00:00</span>
+            <span id="timeTotal">00:00</span>
+          </div>
+        </div>
+
+        <!-- Controls -->
+        <div class="controls-row">
+          <div class="main-btns">
+            <button class="ctrl-icon-btn" onclick="prevTrack()" title="Chương trước">⏮</button>
+            <button class="ctrl-icon-btn" onclick="seekBy(-15)" title="Lùi 15 giây">↺ 15s</button>
+            <button class="btn-play-hero" id="playHeroBtn" onclick="togglePlay()">▶</button>
+            <button class="ctrl-icon-btn" onclick="seekBy(15)" title="Tới 15 giây">↻ 15s</button>
+            <button class="ctrl-icon-btn" onclick="nextTrack()" title="Chương kế tiếp">⏭</button>
+          </div>
+
+          <div class="tool-btns">
+            <button class="chip-btn" id="speedChip" onclick="cyclePlaybackSpeed()">1.0x</button>
+            <a class="chip-btn" id="downloadLink" href="#" download style="text-decoration:none;">
+              📥 Tải MP3
+            </a>
+            <a class="btn-read-link" id="readAlongLink" href="index.html#chuong-1">
+              📖 Đọc chương này
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Right Column: Playlist -->
+    <aside class="playlist-col">
+      <div class="playlist-header">
+        <h3>Mục Lục Sách Nói</h3>
+        <span>11 Phần</span>
+      </div>
+
+      <div class="playlist-scroll" id="playlistContainer">
+        <!-- Render tracks via JS -->
+      </div>
+    </aside>
+
+  </main>
+
+  <script>
+    const CHAPTERS = [
+      {
+        id: "chuong_01",
+        title: "Chương 1: Con đường tiến tới Marketing 7.0",
+        file: "audio/chuong_01.mp3",
+        readHash: "chuong-1",
+        part: "Phần 1: Con đường Đi vào Tâm trí Con người"
+      },
+      {
+        id: "chuong_02",
+        title: "Chương 2: Những Mối Đe dọa từ Trí tuệ Nhân tạo Tổng quát (AGI)",
+        file: "audio/chuong_02.mp3",
+        readHash: "chuong-2",
+        part: "Phần 1: Con đường Đi vào Tâm trí Con người"
+      },
+      {
+        id: "chuong_03",
+        title: "Chương 3: Những Cạm bẫy của Tiếp thị trong Thế giới Số",
+        file: "audio/chuong_03.mp3",
+        readHash: "chuong-3",
+        part: "Phần 1: Con đường Đi vào Tâm trí Con người"
+      },
+      {
+        id: "chuong_04",
+        title: "Chương 4: Những Thách thức khi Thu hút Con người Tăng cường",
+        file: "audio/chuong_04.mp3",
+        readHash: "chuong-4",
+        part: "Phần 1: Con đường Đi vào Tâm trí Con người"
+      },
+      {
+        id: "chuong_05",
+        title: "Chương 5: Tiếp thị Lấy Tâm trí làm Trung tâm",
+        file: "audio/chuong_05.mp3",
+        readHash: "chuong-5",
+        part: "Phần 2: Chìa khóa Mở khóa Tâm trí Con người"
+      },
+      {
+        id: "chuong_06",
+        title: "Chương 6: Lập Bản đồ Nhận thức",
+        file: "audio/chuong_06.mp3",
+        readHash: "chuong-6",
+        part: "Phần 2: Chìa khóa Mở khóa Tâm trí Con người"
+      },
+      {
+        id: "chuong_07",
+        title: "Chương 7: Kể chuyện Thương hiệu",
+        file: "audio/chuong_07.mp3",
+        readHash: "chuong-7",
+        part: "Phần 3: Các Kích thích Tiếp thị Thiết yếu"
+      },
+      {
+        id: "chuong_08",
+        title: "Chương 8: Tuyên bố Giá trị",
+        file: "audio/chuong_08.mp3",
+        readHash: "chuong-8",
+        part: "Phần 3: Các Kích thích Tiếp thị Thiết yếu"
+      },
+      {
+        id: "chuong_09",
+        title: "Chương 9: Phương pháp Bán hàng",
+        file: "audio/chuong_09.mp3",
+        readHash: "chuong-9",
+        part: "Phần 3: Các Kích thích Tiếp thị Thiết yếu"
+      },
+      {
+        id: "chuong_10",
+        title: "Chương 10: Trải nghiệm Khách hàng",
+        file: "audio/chuong_10.mp3",
+        readHash: "chuong-10",
+        part: "Phần 3: Các Kích thích Tiếp thị Thiết yếu"
+      },
+      {
+        id: "phu_luc",
+        title: "Phụ Lục: Các Mô hình Cốt lõi & Từ điển Thuật ngữ",
+        file: "audio/phu_luc.mp3",
+        readHash: "phu-luc-cac-mo-hinh-cot-loi-cua-tiep-thi-va-thong-tin-tac-gia",
+        part: "Phụ lục tham khảo"
+      }
+    ];
+
+    let currentIndex = 0;
+    const audio = document.getElementById('audioElement');
+    const playHeroBtn = document.getElementById('playHeroBtn');
+    const scrubber = document.getElementById('scrubber');
+    const timeCurrent = document.getElementById('timeCurrent');
+    const timeTotal = document.getElementById('timeTotal');
+    const currentTitle = document.getElementById('currentTitle');
+    const currentDesc = document.getElementById('currentDesc');
+    const downloadLink = document.getElementById('downloadLink');
+    const readAlongLink = document.getElementById('readAlongLink');
+    const speedChip = document.getElementById('speedChip');
+    const playlistContainer = document.getElementById('playlistContainer');
+
+    const speeds = [0.8, 1.0, 1.25, 1.5, 1.75];
+    let speedIdx = 1;
+
+    function renderPlaylist() {
+      playlistContainer.innerHTML = '';
+      CHAPTERS.forEach((ch, idx) => {
+        const item = document.createElement('button');
+        item.className = `track-item ${idx === currentIndex ? 'active' : ''}`;
+        item.onclick = () => loadTrack(idx, true);
+        item.innerHTML = `
+          <div class="item-index">${idx + 1}</div>
+          <div class="item-details">
+            <div class="item-title">${ch.title}</div>
+            <div class="item-sub">${ch.part}</div>
+          </div>
+        `;
+        playlistContainer.appendChild(item);
+      });
+    }
+
+    function loadTrack(idx, autoPlay = false) {
+      if (idx < 0 || idx >= CHAPTERS.length) return;
+      currentIndex = idx;
+      const track = CHAPTERS[idx];
+
+      currentTitle.textContent = track.title;
+      currentDesc.textContent = track.part + ' • Tác giả: Philip Kotler, Hermawan Kartajaya, Iwan Setiawan';
+      downloadLink.href = track.file;
+      readAlongLink.href = `index.html#${track.readHash}`;
+
+      audio.src = track.file;
+      audio.load();
+
+      renderPlaylist();
+
+      if (autoPlay) {
+        audio.play().then(() => {
+          playHeroBtn.textContent = '⏸';
+        }).catch(() => {
+          playHeroBtn.textContent = '▶';
+        });
+      } else {
+        playHeroBtn.textContent = '▶';
+      }
+    }
+
+    function togglePlay() {
+      if (audio.paused) {
+        audio.play().then(() => {
+          playHeroBtn.textContent = '⏸';
+        });
+      } else {
+        audio.pause();
+        playHeroBtn.textContent = '▶';
+      }
+    }
+
+    audio.addEventListener('play', () => playHeroBtn.textContent = '⏸');
+    audio.addEventListener('pause', () => playHeroBtn.textContent = '▶');
+
+    function prevTrack() {
+      if (currentIndex > 0) {
+        loadTrack(currentIndex - 1, true);
+      } else {
+        audio.currentTime = 0;
+      }
+    }
+
+    function nextTrack() {
+      if (currentIndex < CHAPTERS.length - 1) {
+        loadTrack(currentIndex + 1, true);
+      }
+    }
+
+    audio.addEventListener('ended', () => {
+      if (currentIndex < CHAPTERS.length - 1) {
+        nextTrack();
+      } else {
+        playHeroBtn.textContent = '▶';
+      }
+    });
+
+    function seekBy(seconds) {
+      audio.currentTime = Math.max(0, Math.min(audio.duration || 0, audio.currentTime + seconds));
+    }
+
+    function formatTime(sec) {
+      const m = Math.floor(sec / 60) || 0;
+      const s = Math.floor(sec % 60) || 0;
+      return `${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
+    }
+
+    audio.addEventListener('loadedmetadata', () => {
+      timeTotal.textContent = formatTime(audio.duration);
+    });
+
+    audio.addEventListener('timeupdate', () => {
+      timeCurrent.textContent = formatTime(audio.currentTime);
+      if (audio.duration) {
+        scrubber.value = (audio.currentTime / audio.duration) * 100;
+      }
+    });
+
+    scrubber.addEventListener('input', () => {
+      if (audio.duration) {
+        audio.currentTime = (scrubber.value / 100) * audio.duration;
+      }
+    });
+
+    function cyclePlaybackSpeed() {
+      speedIdx = (speedIdx + 1) % speeds.length;
+      const s = speeds[speedIdx];
+      audio.playbackRate = s;
+      speedChip.textContent = s + 'x';
+    }
+
+    // Init
+    loadTrack(0, false);
+  </script>
+</body>
+</html>

@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sách Nói Marketing 7.0 (Demo Chương 1) - AI Hub</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0b0f19;
+      --surface: #131b2e;
+      --card: #1c2640;
+      --accent: #3b82f6;
+      --accent-gradient: linear-gradient(135deg, #3b82f6, #8b5cf6);
+      --text: #f1f5f9;
+      --text-muted: #94a3b8;
+      --border: #233152;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem 1rem;
+    }
+    .container {
+      width: 100%;
+      max-width: 860px;
+      display: flex;
+      flex-direction: column;
+      gap: 1.75rem;
+    }
+    .header {
+      text-align: center;
+    }
+    .badge {
+      display: inline-block;
+      padding: 0.35rem 0.85rem;
+      background: rgba(59, 130, 246, 0.15);
+      color: #60a5fa;
+      border: 1px solid rgba(59, 130, 246, 0.3);
+      border-radius: 9999px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #ffffff, #cbd5e1);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 0.5rem;
+    }
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    /* Player Card */
+    .player-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 2rem;
+      box-shadow: 0 20px 40px -15px rgba(0,0,0,0.5);
+    }
+    .voice-selector {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      background: var(--card);
+      padding: 0.4rem;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+    }
+    .voice-btn {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.75rem;
+      border: none;
+      background: transparent;
+      color: var(--text-muted);
+      font-weight: 600;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-family: inherit;
+    }
+    .voice-btn.active {
+      background: var(--accent);
+      color: #ffffff;
+      box-shadow: 0 4px 12px rgba(59, 130, 246, 0.35);
+    }
+
+    .audio-meta {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      margin-bottom: 1.5rem;
+    }
+    .cover-art {
+      width: 76px;
+      height: 76px;
+      border-radius: 14px;
+      background: var(--accent-gradient);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      box-shadow: 0 8px 16px rgba(59, 130, 246, 0.25);
+      flex-shrink: 0;
+    }
+    .track-info h3 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+    }
+    .track-info p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    /* Progress Bar */
+    .progress-container {
+      margin-bottom: 1.25rem;
+    }
+    .time-bar {
+      width: 100%;
+      height: 8px;
+      background: var(--card);
+      border-radius: 4px;
+      outline: none;
+      cursor: pointer;
+      accent-color: var(--accent);
+    }
+    .time-labels {
+      display: flex;
+      justify-content: space-between;
+      color: var(--text-muted);
+      font-size: 0.8rem;
+      margin-top: 0.4rem;
+    }
+
+    /* Controls */
+    .controls {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .playback-main {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+    }
+    .ctrl-btn {
+      background: none;
+      border: none;
+      color: var(--text);
+      cursor: pointer;
+      font-size: 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.15s, color 0.15s;
+    }
+    .ctrl-btn:hover {
+      color: #60a5fa;
+      transform: scale(1.1);
+    }
+    .play-btn {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: #ffffff;
+      font-size: 1.5rem;
+      box-shadow: 0 8px 20px rgba(59, 130, 246, 0.4);
+    }
+    .play-btn:hover {
+      transform: scale(1.06);
+      color: #fff;
+    }
+    .speed-btn {
+      background: var(--card);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 0.4rem 0.8rem;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.85rem;
+      cursor: pointer;
+    }
+
+    /* Transcript Box */
+    .transcript-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.75rem;
+    }
+    .transcript-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #93c5fd;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .transcript-content {
+      font-family: 'Newsreader', serif;
+      font-size: 1.15rem;
+      line-height: 1.8;
+      color: #cbd5e1;
+      max-height: 380px;
+      overflow-y: auto;
+      padding-right: 0.75rem;
+    }
+    .transcript-content p {
+      margin-bottom: 1.25rem;
+    }
+    .transcript-content::-webkit-scrollbar {
+      width: 6px;
+    }
+    .transcript-content::-webkit-scrollbar-thumb {
+      background: var(--card);
+      border-radius: 3px;
+    }
+
+    /* Footer links */
+    .footer-actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 0.5rem;
+    }
+    .link-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: color 0.2s;
+    }
+    .link-btn:hover {
+      color: #ffffff;
+    }
+    .download-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--card);
+      border: 1px solid var(--border);
+      color: #93c5fd;
+      padding: 0.6rem 1.2rem;
+      border-radius: 10px;
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 600;
+      transition: all 0.2s;
+    }
+    .download-btn:hover {
+      background: var(--border);
+      color: #ffffff;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="header">
+      <span class="badge">🎙️ Audiobook Preview • Edge TTS</span>
+      <h1>MARKETING 7.0</h1>
+      <p class="subtitle">Bản nghe thử nghiệm Chương 1: Con đường tiến tới Marketing 7.0</p>
+    </div>
+
+    <!-- Main Player Card -->
+    <div class="player-card">
+      <!-- Voice Toggle -->
+      <div class="voice-selector">
+        <button class="voice-btn" id="btnFemale" onclick="selectVoice('female')">
+          👩 Giọng Nữ (Hoài My - vi-VN)
+        </button>
+        <button class="voice-btn active" id="btnMale" onclick="selectVoice('male')">
+          👨 Giọng Nam (Nam Minh - vi-VN)
+        </button>
+      </div>
+
+      <!-- Metadata -->
+      <div class="audio-meta">
+        <div class="cover-art">🎧</div>
+        <div class="track-info">
+          <h3 id="trackTitle">Chương 1: Con đường tiến tới Marketing 7.0</h3>
+          <p id="trackArtist">Giọng đọc: Nam Minh (Microsoft Neural Voice - Nam)</p>
+        </div>
+      </div>
+
+      <!-- Audio Element -->
+      <audio id="audioPlayer" preload="metadata">
+        <source id="audioSource" src="audio/demo_chuong_1_nam_namminh.mp3" type="audio/mpeg">
+        Trình duyệt của bạn không hỗ trợ phát âm thanh.
+      </audio>
+
+      <!-- Progress Bar -->
+      <div class="progress-container">
+        <input type="range" class="time-bar" id="seekBar" value="0" min="0" max="100" step="0.1">
+        <div class="time-labels">
+          <span id="currentTime">00:00</span>
+          <span id="durationTime">00:00</span>
+        </div>
+      </div>
+
+      <!-- Controls -->
+      <div class="controls">
+        <div class="playback-main">
+          <button class="ctrl-btn" onclick="skip(-15)" title="Lùi lại 15 giây">↺ 15s</button>
+          <button class="ctrl-btn play-btn" id="playBtn" onclick="togglePlay()">▶</button>
+          <button class="ctrl-btn" onclick="skip(15)" title="Tua tới 15 giây">↻ 15s</button>
+        </div>
+
+        <div style="display: flex; gap: 0.75rem; align-items: center;">
+          <button class="speed-btn" id="speedBtn" onclick="cycleSpeed()">1.0x</button>
+          <a class="download-btn" id="downloadBtn" href="audio/demo_chuong_1_nam_namminh.mp3" download>
+            📥 Tải MP3
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Transcript Box -->
+    <div class="transcript-box">
+      <div class="transcript-title">
+        📖 Kịch bản theo dõi (Read-along Transcript)
+      </div>
+      <div class="transcript-content">
+        <p>Chào mừng quý thính giả đến với phiên bản sách nói <strong>Marketing 7.0: Cẩm nang cho Người làm Tiếp thị Tư duy trong Kỷ nguyên AI</strong>. Tác phẩm của các tác giả Philip Kotler, Hermawan Kartajaya và Iwan Setiawan.</p>
+        <p><strong>Phần một: Con đường Đi vào Tâm trí Con người.</strong><br>
+        <strong>Chương một: Con đường tiến tới Marketing 7.0.</strong> Vì sao Mạng xã hội, Trí tuệ Nhân tạo và Công nghệ Nhập vai mở khóa Tâm trí Con người.</p>
+        <p>Công nghệ luôn vận động và tiến hóa không ngừng, với mỗi phiên bản sau được xây dựng dựa trên nền tảng của những phiên bản đi trước. Hệ điều hành Microsoft Windows lần đầu tiên ra mắt vào năm 1985 và đã trải qua nhiều cột mốc nâng cấp lớn. Trình duyệt Google Chrome còn đưa quy luật này lên một cấp độ mới với chu kỳ cập nhật thần tốc, chạm mốc Phiên bản 133 vào tháng 3 năm 2025.</p>
+        <p>Cách đánh số phiên bản này không đơn thuần phản ánh các bản cập nhật phần mềm; chúng thể hiện bản chất kế thừa và lặp lại liên tục của chính công nghệ. Tương tự như vậy, tiếp thị chưa bao giờ đứng yên. Những bước tiến công nghệ, từ truyền thông số, trí tuệ nhân tạo AI cho đến công nghệ nhập vai đa giác quan, luôn là động lực định hình sự tiến hóa của ngành này.</p>
+        <p><em>Marketing 7.0</em> là tác phẩm thứ năm trong chuỗi sách Marketing X.0 kéo dài suốt 16 năm qua. Cách đặt tên sách phản ánh tiền đề cốt lõi: bản chất của tiếp thị chính là vận động cùng thị trường, một quá trình thích ứng liên tục trước một thị trường luôn biến đổi không ngừng.</p>
+        <p>Trước kỷ nguyên số, tiếp thị chủ yếu dựa vào các phương pháp tiếp cận đại chúng với khả năng tùy biến rất hạn chế. Sự trỗi dậy của các kênh kỹ thuật số, chẳng hạn như mạng xã hội và thương mại điện tử, đã dịch chuyển một phần lớn hoạt động kinh doanh lên môi trường trực tuyến, mở đường cho hoạt động tiếp thị nhắm mục tiêu chính xác hơn.</p>
+        <p>Một sản phẩm phụ quan trọng từ sự bùng nổ của tiếp thị số chính là nguồn dữ liệu lớn được tích lũy từ quá trình sáng tạo nội dung và tương tác của khán giả. Nguồn dữ liệu này đã tiếp nhiên liệu cho những bước đột phá vượt bậc của AI, trao quyền cho doanh nghiệp triển khai các chiến dịch nhắm mục tiêu dựa trên dữ liệu với độ chính xác cao hơn nữa.</p>
+        <p>Giờ đây, tiếp thị đang đứng trước ngưỡng cửa của cuộc chuyển mình tiếp theo: tích hợp <strong>khoa học nhận thức</strong>, ngành khoa học nghiên cứu cách tâm trí con người vận hành, vào kho vũ khí của người làm tiếp thị.</p>
+        <p>Khoa học nhận thức đã mang lại những góc nhìn sâu sắc về hành vi con người trong nhiều thập kỷ qua, nhưng khả năng mở rộng quy mô và thích ứng theo thời gian thực từng là rào cản kìm hãm việc ứng dụng nó vào tiếp thị. Đây chính là lúc AI và công nghệ nhập vai trở nên tối quan trọng. Nếu thiếu chúng, tiếp thị nhận thức sẽ mãi chỉ nằm trên lý thuyết. Chính AI và thực tế mở rộng đã thổi hồn cho khoa học nhận thức bước vào thực tiễn, giúp doanh nghiệp hiện thực hóa việc cá nhân hóa ở quy mô đại chúng.</p>
+        <p>Hãy cùng điểm lại ba cánh cổng cốt lõi để tiếp thị mở khóa tâm trí con người trong Marketing 7.0:</p>
+        <p><strong>Thứ nhất là Cổng Xã hội:</strong> Khách hàng không đánh giá thương hiệu một cách cô lập. Phán đoán của họ chịu ảnh hưởng lớn từ ý kiến tập thể của những người xung quanh. Khoa học nhận thức chỉ ra rằng hạch hạnh nhân trong não bộ chi phối cảm xúc xã hội, tạo nên hiện tượng bằng chứng xã hội. Đặc biệt, các tế bào thần kinh phản chiếu, hay nơ-ron gương, kích hoạt cả khi con người tự hành động lẫn khi quan sát người khác. Khi thấy người tiêu dùng thực tế hoặc người ảnh hưởng sử dụng sản phẩm, não bộ thính giả sẽ mô phỏng lại trải nghiệm đó, thôi thúc niềm tin và quyết định mua hàng.</p>
+        <p><strong>Thứ hai là Cổng Cá nhân:</strong> Nếu kích thích xã hội đánh vào cảm xúc, thì kích thích cá nhân hóa lại kích hoạt quá trình xử lý lý tính. Dựa trên lý thuyết của Daniel Kahneman về Hệ thống 1 và Hệ thống 2, mạng lưới nổi bật trong não bộ đóng vai trò người gác cổng, chỉ cho phép những thông điệp cá nhân thực sự phù hợp đi sâu vào nhận thức.</p>
+        <p><strong>Và thứ ba là Cổng Trải nghiệm:</strong> Tiếp thị hiện đại không dừng lại ở lời nói hay hình ảnh phẳng. Thông qua thực tế ảo VR, thực tế tăng cường AR và không gian số hóa, thương hiệu mang đến những trải nghiệm đa giác quan, kích hoạt trí nhớ dài hạn và khắc sâu vào tâm trí khách hàng.</p>
+        <p>Quý thính giả vừa lắng nghe đoạn trích bản mẫu sách nói Marketing 7.0. Cảm ơn quý vị đã lắng nghe.</p>
+      </div>
+    </div>
+
+    <!-- Navigation Footer -->
+    <div class="footer-actions">
+      <a href="index.html" class="link-btn">
+        ← Quay lại Bản đọc sách trực tuyến đầy đủ
+      </a>
+      <span style="color: var(--text-muted); font-size: 0.85rem;">
+        Dự án AI Hub • Sản xuất sách nói tự động
+      </span>
+    </div>
+  </div>
+
+  <script>
+    const audio = document.getElementById('audioPlayer');
+    const playBtn = document.getElementById('playBtn');
+    const seekBar = document.getElementById('seekBar');
+    const currentTimeEl = document.getElementById('currentTime');
+    const durationTimeEl = document.getElementById('durationTime');
+    const speedBtn = document.getElementById('speedBtn');
+    const trackArtist = document.getElementById('trackArtist');
+    const downloadBtn = document.getElementById('downloadBtn');
+
+    const voiceSources = {
+      female: {
+        src: 'audio/demo_chuong_1_nu_hoaimy.mp3',
+        artist: 'Giọng đọc: Hoài My (Microsoft Neural Voice - Nữ)'
+      },
+      male: {
+        src: 'audio/demo_chuong_1_nam_namminh.mp3',
+        artist: 'Giọng đọc: Nam Minh (Microsoft Neural Voice - Nam)'
+      }
+    };
+
+    let currentVoice = 'male';
+    const speeds = [0.8, 1.0, 1.25, 1.5];
+    let speedIndex = 1;
+
+    function selectVoice(voice) {
+      if (voice === currentVoice) return;
+      currentVoice = voice;
+      const wasPlaying = !audio.paused;
+      const currentPos = audio.currentTime;
+
+      document.getElementById('btnFemale').classList.toggle('active', voice === 'female');
+      document.getElementById('btnMale').classList.toggle('active', voice === 'male');
+
+      audio.src = voiceSources[voice].src;
+      trackArtist.textContent = voiceSources[voice].artist;
+      downloadBtn.href = voiceSources[voice].src;
+
+      audio.load();
+      audio.onloadedmetadata = () => {
+        audio.currentTime = currentPos;
+        if (wasPlaying) audio.play();
+      };
+    }
+
+    function togglePlay() {
+      if (audio.paused) {
+        audio.play();
+        playBtn.textContent = '⏸';
+      } else {
+        audio.pause();
+        playBtn.textContent = '▶';
+      }
+    }
+
+    audio.addEventListener('play', () => playBtn.textContent = '⏸');
+    audio.addEventListener('pause', () => playBtn.textContent = '▶');
+
+    function formatTime(seconds) {
+      const mins = Math.floor(seconds / 60) || 0;
+      const secs = Math.floor(seconds % 60) || 0;
+      return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+    }
+
+    audio.addEventListener('loadedmetadata', () => {
+      durationTimeEl.textContent = formatTime(audio.duration);
+    });
+
+    audio.addEventListener('timeupdate', () => {
+      currentTimeEl.textContent = formatTime(audio.currentTime);
+      if (audio.duration) {
+        seekBar.value = (audio.currentTime / audio.duration) * 100;
+      }
+    });
+
+    seekBar.addEventListener('input', () => {
+      if (audio.duration) {
+        audio.currentTime = (seekBar.value / 100) * audio.duration;
+      }
+    });
+
+    function skip(sec) {
+      audio.currentTime = Math.max(0, Math.min(audio.duration || 0, audio.currentTime + sec));
+    }
+
+    function cycleSpeed() {
+      speedIndex = (speedIndex + 1) % speeds.length;
+      const speed = speeds[speedIndex];
+      audio.playbackRate = speed;
+      speedBtn.textContent = speed + 'x';
+    }
+  </script>
+</body>
+</html>
